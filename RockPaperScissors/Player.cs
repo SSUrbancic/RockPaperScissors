@@ -9,6 +9,8 @@ namespace RockPaperScissors
     public abstract class Player
     {
         //member attributes (HAS A...)
+
+        //gestureArray[0] = Rock, gestureArray[1] = Paper, gestureArray[2] = Scissors, gestureArray[3] = Spock, gestureArray[4] = Lizard// 
         public int[] gestureArray = { 0, 1, 2, 3, 4 };
         public List<int> roundWins = new List<int>();
         public string playerName;

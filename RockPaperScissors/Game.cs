@@ -8,9 +8,6 @@ namespace RockPaperScissors
 {
     class Game
     {
-
-        //gestureArray[0] = Rock, gestureArray[1] = Paper, gestureArray[2] = Scissors, gestureArray[3] = Spock, gestureArray[4] = Lizard// 
-        public int[] gestureArray = { 0, 1, 2, 3, 4 };
         Player playerOne;
         Player playerTwo;
         bool winner = false;
@@ -101,13 +98,15 @@ namespace RockPaperScissors
             if (roundWin == "Player One Wins!")
             {
                 playerOne.roundWins.Add(1);
-                playerOne.roundWins.ForEach(Console.WriteLine);
+
+                Console.WriteLine($"Player One has {playerOne.roundWins.Count} wins");
+                
                 return Console.ReadLine();
             }
             else if (roundWin == "Player Two Wins!")
             {
                 playerTwo.roundWins.Add(1);
-                playerTwo.roundWins.ForEach(Console.WriteLine);
+                Console.WriteLine($"Player One has {playerOne.roundWins.Count} wins");
                 return Console.ReadLine();
             }
             else
