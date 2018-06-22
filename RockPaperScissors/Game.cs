@@ -11,98 +11,126 @@ namespace RockPaperScissors
 
         //gestureArray[0] = Rock, gestureArray[1] = Paper, gestureArray[2] = Scissors, gestureArray[3] = Spock, gestureArray[4] = Lizard// 
         public int[] gestureArray = { 0, 1, 2, 3, 4 };
-        public int playerOneChoice;
-        public int playerTwoChoice;
+        Player playerOne;
+        Player playerTwo;
+        bool winner = false;
+
 
 
 
         //Constructor
         public Game()
         {
-           
+            DeterminePlayers();
+            while (winner == false)
+            {
+                TrackWinsPerPlayer();
+                DetermineWinner();
+            }
         }
-
         //method
-        public int DetermineRandomGesture()
-        {
-            int randomSelection = gestureArray[new Random().Next(0, gestureArray.Length)];
-            return randomSelection;
-        }
-        
-        public int DetermineGesture()
-        {
-            Console.WriteLine("Choose a gesture: 1- rock, 2 - paper, 3 - scissors, 4 - Spock, 5 - Lizard");
-            int userInput = Convert.ToInt32(Console.ReadLine());
-            int gesture;
 
-            if (userInput == 1)
+        
+
+        public bool DetermineGameType()
+        {
+            bool singlePlayerGameMode;
+            Console.WriteLine("Select Game mode: press 1 for single player or press 2 for multi player.");
+            string userInput = Console.ReadLine();
+
+            if (userInput == "1")
             {
-                gesture = gestureArray[0];
-                Console.WriteLine("Rock");
-                return gesture;
-            }
-            else if (userInput == 2)
-            {
-                gesture = gestureArray[1];
-                Console.WriteLine("Paper");
-                return gesture;
-            }
-            else if (userInput == 3)
-            {
-                gesture = gestureArray[2];
-                Console.WriteLine("Scissors");
-                return gesture;
-            }
-            else if (userInput == 4)
-            {
-                gesture = gestureArray[3];
-                Console.WriteLine("Spock");
-                return gesture;
-            }
-            else if (userInput == 5)
-            {
-                gesture = gestureArray[4];
-                Console.WriteLine("Lizard");
-                return gesture;
+                singlePlayerGameMode = true;
+                return singlePlayerGameMode;
             }
             else
             {
-                Console.WriteLine("Invalid Input, please try again!!!");
-                DetermineGesture();
-                return 100;
+                singlePlayerGameMode = false;
+                return singlePlayerGameMode;
             }
 
-
-
-
-
-
         }
-            public string ExecuteRound()
+
+        public void DeterminePlayers()
+        {
+            bool singlePlayerGameMode = DetermineGameType();
+            if (singlePlayerGameMode == true)
             {
-            playerOneChoice = DetermineGesture();
-            Console.ReadLine();
-            playerTwoChoice = DetermineRandomGesture();
+                playerOne = new Human();
+                playerTwo = new Computer();
+            }
+            else
+            {
+                playerOne = new Human();
+                playerTwo = new Human();
+            }
+        }
+
+
+
+        public string ExecuteRound()
+        {
+            int playerOneChoice = playerOne.DetermineGesture();
+            int playerTwoChoice = playerTwo.DetermineGesture();
+
             int roundValue = (5 + playerOneChoice - playerTwoChoice) % 5;
 
             if (roundValue == 1 || roundValue == 3)
             {
                 Console.WriteLine("Player One Wins!");
-                return Console.ReadLine();
+                string winner = "Player One Wins!";
+                return winner;
             }
             else if (roundValue == 2 || roundValue == 4)
             {
                 Console.WriteLine("Player Two Wins!");
-                return Console.ReadLine();
+                string winner = "Player Two Wins!";
+                return winner;
             }
             else
             {
                 Console.WriteLine("It's a tie!");
+                return null;
+            }
+            
+        }
+        public string TrackWinsPerPlayer()
+        {
+            string roundWin = ExecuteRound();
+
+            if (roundWin == "Player One Wins!")
+            {
+                playerOne.roundWins.Add(1);
+                playerOne.roundWins.ForEach(Console.WriteLine);
                 return Console.ReadLine();
             }
-
-            
-
+            else if (roundWin == "Player Two Wins!")
+            {
+                playerTwo.roundWins.Add(1);
+                playerTwo.roundWins.ForEach(Console.WriteLine);
+                return Console.ReadLine();
             }
+            else
+            {
+                Console.WriteLine("It's a tie, play again!");
+                return null;
+            }           
+        }
+
+        public void DetermineWinner()
+        {
+            if(playerOne.roundWins.Count == 2)
+            {
+                Console.WriteLine(playerOne.playerName + " wins!!");
+                winner = true;
+                
+            }
+            else if(playerTwo.roundWins.Count == 2)
+            {
+                Console.WriteLine(playerTwo.playerName + " wins!!");
+                winner = true;
+            }
+        }
     }
-    }
+}
+
