@@ -19,7 +19,7 @@ namespace RockPaperScissors
         //Constructor
         public Game()
         {
-            Console.WriteLine(ExecuteRound());
+           
         }
 
         //method
@@ -67,9 +67,9 @@ namespace RockPaperScissors
             }
             else
             {
-                    Console.WriteLine("Invalid Input, please try again!!!");
-                    DetermineGesture();
-                    return 100;
+                Console.WriteLine("Invalid Input, please try again!!!");
+                DetermineGesture();
+                return 100;
             }
 
 
@@ -83,7 +83,6 @@ namespace RockPaperScissors
             playerOneChoice = DetermineGesture();
             Console.ReadLine();
             playerTwoChoice = DetermineRandomGesture();
-            Console.WriteLine(Console.ReadLine());
             int roundValue = (5 + playerOneChoice - playerTwoChoice) % 5;
 
             if (roundValue == 1 || roundValue == 3)
