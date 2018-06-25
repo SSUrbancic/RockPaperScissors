@@ -46,31 +46,31 @@ namespace RockPaperScissors
             if (userInput == 1)
             {
                 gesture = gestureArray[0];
-                Console.WriteLine("Rock");
+                Console.WriteLine("Player One Chose: Rock");
                 return gesture;
             }
             else if (userInput == 2)
             {
                 gesture = gestureArray[1];
-                Console.WriteLine("Paper");
+                Console.WriteLine("Player One Chose: Paper");
                 return gesture;
             }
             else if (userInput == 3)
             {
                 gesture = gestureArray[2];
-                Console.WriteLine("Scissors");
+                Console.WriteLine("Player One Chose: Scissors");
                 return gesture;
             }
             else if (userInput == 4)
             {
                 gesture = gestureArray[3];
-                Console.WriteLine("Spock");
+                Console.WriteLine("Player One Chose: Spock");
                 return gesture;
             }
             else if (userInput == 5)
             {
                 gesture = gestureArray[4];
-                Console.WriteLine("Lizard");
+                Console.WriteLine("Player One Chose: Lizard");
                 return gesture;
             }
             else

@@ -8,7 +8,7 @@ namespace RockPaperScissors
 {
     class Computer : Player
     {
-        string[] gestureWordEquivalantArray = { "Rock", "Paper", "Scissors", "Spock", "Lizard" };
+        string[] gestureWordEquivalentArray = { "Rock", "Paper", "Scissors", "Spock", "Lizard" };
         
 
         public override void DetermineName()
@@ -21,10 +21,8 @@ namespace RockPaperScissors
         public override int DetermineGesture()
         {
             int randomSelection = gestureArray[new Random().Next(0, gestureArray.Length)];
-            Console.WriteLine($"Computer Chose {gestureWordEquivalantArray[randomSelection]}");
+            Console.WriteLine($"Computer Chose: {gestureWordEquivalentArray[randomSelection]}");
             return randomSelection;
         }
-
-
     }
 }

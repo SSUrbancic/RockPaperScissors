@@ -100,13 +100,16 @@ namespace RockPaperScissors
                 playerOne.roundWins.Add(1);
 
                 Console.WriteLine($"Player One has {playerOne.roundWins.Count} wins");
-                
+                Console.WriteLine($"Player Two has {playerTwo.roundWins.Count} wins");
+
                 return Console.ReadLine();
             }
             else if (roundWin == "Player Two Wins!")
             {
                 playerTwo.roundWins.Add(1);
                 Console.WriteLine($"Player One has {playerOne.roundWins.Count} wins");
+                Console.WriteLine($"Player Two has {playerTwo.roundWins.Count} wins");
+
                 return Console.ReadLine();
             }
             else
